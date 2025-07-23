@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Hewan extends Model
 {
+    protected $table = 'hewan'; // 👈 Tambahkan baris ini!
     protected $fillable = ['nama', 'jenis_hewan_id', 'kandang_id', 'umur', 'jenis_kelamin'];
 
     public function jenis(): BelongsTo

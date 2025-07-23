@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class JenisHewan extends Model
 {
+    protected $table = 'jenis_hewan'; // ← Fix penting!
     protected $fillable = ['nama_jenis'];
 
     public function hewan(): HasMany

@@ -23,7 +23,20 @@ class HewanResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nama')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('jenis_hewan_id')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\Select::make('kandang_id')
+                    ->relationship('kandang', 'id')
+                    ->required(),
+                Forms\Components\TextInput::make('umur')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\TextInput::make('jenis_kelamin')
+                    ->required(),
             ]);
     }
 
@@ -31,7 +44,26 @@ class HewanResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('nama')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('jenis_hewan_id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('kandang.id')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('umur')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('jenis_kelamin'),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
